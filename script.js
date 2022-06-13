@@ -6,7 +6,7 @@ let items = [
     sortOrder: 1,
   },
   {
-    name: 'Beta',
+    name: 'Bravo',
     sortOrder: 2,
   },
   {
@@ -26,19 +26,19 @@ let items = [
     sortOrder: 6,
   },
   {
-    name: 'Hotel',
+    name: 'Golf',
     sortOrder: 7,
   },
   {
-    name: 'Indigo',
+    name: 'Hotel',
     sortOrder: 8,
   },
   {
-    name: 'November',
+    name: 'India',
     sortOrder: 9,
   },
   {
-    name: 'Juliet',
+    name: 'Juliett',
     sortOrder: 10,
   }
 ];
@@ -48,9 +48,9 @@ const render = (arr) => {
   items.forEach((item, index) => {
     const disabledUp = index === 0 ? ' disabled' : '';
     const disabledDown = index === items.length-1 ? ' disabled' : '';
-    const up = `<button onclick="changeOrder(${index + 1}, -1)"${disabledUp}>up</button>`;
-    const down = `<button onclick="changeOrder(${index + 1}, 1)"${disabledDown}>down</button>`;
-    str += `<li>${item.name} : ${item.sortOrder} ${up} ${down}`
+    const up = `<button onclick="changeOrder(${index + 1}, -1)"${disabledUp}>UP</button>`;
+    const down = `<button onclick="changeOrder(${index + 1}, 1)"${disabledDown}>DOWN</button>`;
+    str += `<li>${item.name}: ${item.sortOrder} ${up} ${down}`
   });
   str += '<ul>';
   $('#display').innerHTML = str;
@@ -58,7 +58,7 @@ const render = (arr) => {
 
 const changeOrder = (target, dir) => {
   const len = items.length;
-  items = items.map((item, index) => {
+  items = items.map((item) => {
     const startLimit = dir === 1 && target > 0 || dir === -1 && target > 1;
     const endLimit = dir === 1 && target < len || dir === -1 && target < len + 1;
     if (startLimit && endLimit) {
@@ -77,4 +77,3 @@ const changeOrder = (target, dir) => {
 }
 
 render(items);
-
